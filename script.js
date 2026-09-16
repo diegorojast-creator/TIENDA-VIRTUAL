@@ -3,48 +3,29 @@ const NUMERO_WHATSAPP = "573143753293"; // Número de WhatsApp configurado
 
 // Base de datos local de productos
 const productos = [
-    {
-        id: 1,
-        nombre: "Audífonos Inalámbricos TWS",
-        categoria: "tecnologia",
-        precio: 25.00,
-        imagen: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 2,
-        nombre: "Smartwatch Deportivo Pro",
-        categoria: "tecnologia",
-        precio: 45.00,
-        imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 3,
-        nombre: "Humidificador Ultrasónico RGB",
-        categoria: "hogar",
-        precio: 18.00,
-        imagen: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 4,
-        nombre: "Lámpara LED Inteligente",
-        categoria: "hogar",
-        precio: 15.00,
-        imagen: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 5,
-        nombre: "Reloj Minimalista Hombre",
-        categoria: "accesorios",
-        precio: 30.00,
-        imagen: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 6,
-        nombre: "Gafas de Sol Polarizadas",
-        categoria: "accesorios",
-        precio: 20.00,
-        imagen: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80"
-    }
+  { id: 1, nombre: "Afilador de Cuchillos", precio: 4000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Afilador+de+Cuchillos" },
+  { id: 2, nombre: "Termómetro de Cocina Sencillo", precio: 5000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Termometro+de+Cocina" },
+  { id: 3, nombre: "Encendedor Eléctrico Recargable", precio: 5000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Encendedor+Electrico" },
+  { id: 4, nombre: "Molde de Silicona x6", precio: 6000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Molde+de+Silicona" },
+  { id: 5, nombre: "Gramera Amarilla", precio: 8000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Gramera+Amarilla" },
+  { id: 6, nombre: "Gramera", precio: 9000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Gramera" },
+  { id: 7, nombre: "Termo Vacuum (Frío o Calor)", precio: 13000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Termo+Vacuum" },
+  { id: 8, nombre: "Cinturón de Cólicos (Calentador y Masajeador)", precio: 14000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Cinturon+de+Colicos" },
+  { id: 9, nombre: "Licuadora de Vaso Doble", precio: 15000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Licuadora+Vaso+Doble" },
+  { id: 10, nombre: "Kit Masajeador de Pistola", precio: 15000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Masajeador+Pistola" },
+  { id: 11, nombre: "Repetidor de WiFi", precio: 16000, categoria: "tecnologia", imagen: "https://via.placeholder.com/300?text=Repetidor+WiFi" },
+  { id: 12, nombre: "Cojín de Gel", precio: 17000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Cojin+de+Gel" },
+  { id: 13, nombre: "Gallina Hervidora de Huevos", precio: 17000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Hervidor+de+Huevos" },
+  { id: 14, nombre: "Depiladora Eléctrica 4 en 1 (Lady Shaver)", precio: 20000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Depiladora+4en1" },
+  { id: 15, nombre: "Rizador 3 Tubos Onda de Sirena", precio: 20000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Rizador+3+Tubos" },
+  { id: 16, nombre: "Calentador Handy de Conectar", precio: 20000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Calentador+Handy" },
+  { id: 17, nombre: "Doñera Eléctrica x7", precio: 36000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Donera+Electrica" },
+  { id: 18, nombre: "Cosmetiquera con Espejo Grande", precio: 37000, categoria: "accesorios", imagen: "https://via.placeholder.com/300?text=Cosmetiquera" },
+  { id: 19, nombre: "Compresor de Aire Portátil", precio: 38000, categoria: "tecnologia", imagen: "https://via.placeholder.com/300?text=Compresor+de+Aire" },
+  { id: 20, nombre: "Contenedor x7 Tarros para Granos", precio: 40000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Contenedores+x7" },
+  { id: 21, nombre: "Lonchera Eléctrica Calentador", precio: 42000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Lonchera+Electrica" },
+  { id: 22, nombre: "Set Cuchillos Giratorios con Soporte", precio: 47000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Set+Cuchillos" },
+  { id: 23, nombre: "Proyector P30 Max con +1000 Juegos (3 Controles)", precio: 180000, categoria: "tecnologia", imagen: "https://via.placeholder.com/300?text=Proyector+P30+Max" }
 ];
 
 // Carrito guardado en memoria
