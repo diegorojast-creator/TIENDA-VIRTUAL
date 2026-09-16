@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FERNANDO - FACTORY PRICE | Productos Importados Directos de Fábrica</title>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navegación -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-boxes-packing"></i> FERNANDO <span>FACTORY PRICE</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#hero">Inicio</a>
+                <a href="#categorias">Categorías</a>
+                <a href="#productos">Productos</a>
+                <a href="#confianza">¿Por qué nosotros?</a>
+            </nav>
+
+            <div class="nav-icons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <span class="badge">Importaciones Directas</span>
+            <h1>Precios de Fábrica a la Puerta de tu Hogar</h1>
+            <p>Ahorra hasta un 50% comprando productos importados sin intermediarios.</p>
+            <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="container categories-section" id="categorias">
+        <h2 class="section-title">Categorías Principales</h2>
+        <div class="categories-grid">
+            <button class="category-btn active" data-category="todos">
+                <i class="fa-solid fa-border-all"></i> Todos
+            </button>
+            <button class="category-btn" data-category="tecnologia">
+                <i class="fa-solid fa-mobile-screen-button"></i> Tecnología
+            </button>
+            <button class="category-btn" data-category="hogar">
+                <i class="fa-solid fa-house"></i> Hogar & Cocina
+            </button>
+            <button class="category-btn" data-category="accesorios">
+                <i class="fa-solid fa-clock"></i> Accesorios
+            </button>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section class="container products-section" id="productos">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="products-grid" id="products-grid">
+            <!-- Los productos se cargan dinámicamente con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Sección de Confianza / Beneficios -->
+    <section class="trust-section" id="confianza">
+        <div class="container trust-grid">
+            <div class="trust-card">
+                <i class="fa-solid fa-industry"></i>
+                <h3>Precios de Fábrica</h3>
+                <p>Importación directa sin intermediarios comerciales.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>Envíos Rápidos</h3>
+                <p>Despachos garantizados a todo el país.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Garantía Asegurada</h3>
+                <p>Garantía de fábrica en todas tus compras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Carrito de Compras -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito de Compras</h3>
+                <span class="close-btn" id="close-cart">&times;</span>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Ítems del carrito insertados vía JS -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">$0.00</span>
+                </div>
+                <button class="btn btn-whatsapp-checkout" id="whatsapp-checkout">
+                    <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/573143753293?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20productos." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 FERNANDO - FACTORY PRICE. Todos los derechos reservados.</p>
+            <p>Importaciones y Ventas al por Mayor y Menor.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
