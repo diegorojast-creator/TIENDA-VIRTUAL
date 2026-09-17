@@ -48,13 +48,22 @@ const navMenu = document.getElementById('nav-menu');
 document.addEventListener('DOMContentLoaded', () => {
     mostrarProductos(productos);
     
-    // Filtro por categorías
+    // Filtro por categorías con actualización visual de botones
     categoryBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            // Elimina la clase activa de todos los botones para desmarcarlos
+            categoryBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
 
-            const categoria = btn.dataset.category;
+            // Agrega la clase activa al botón presionado
+            const targetBtn = e.currentTarget;
+            targetBtn.classList.add('active');
+            targetBtn.setAttribute('aria-selected', 'true');
+
+            // Filtrado de productos
+            const categoria = targetBtn.dataset.category;
             if (categoria === 'todos') {
                 mostrarProductos(productos);
             } else {
@@ -65,16 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle menú móvil
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
 
     // Abrir/Cerrar Carrito
-    cartIcon.addEventListener('click', () => cartModal.classList.add('active'));
-    closeCartBtn.addEventListener('click', () => cartModal.classList.remove('active'));
+    if (cartIcon) cartIcon.addEventListener('click', () => cartModal.classList.add('active'));
+    if (closeCartBtn) closeCartBtn.addEventListener('click', () => cartModal.classList.remove('active'));
     
     // Checkout por WhatsApp
-    whatsappCheckoutBtn.addEventListener('click', enviarPedidoWhatsApp);
+    if (whatsappCheckoutBtn) whatsappCheckoutBtn.addEventListener('click', enviarPedidoWhatsApp);
 });
 
 // Función para renderizar los productos
