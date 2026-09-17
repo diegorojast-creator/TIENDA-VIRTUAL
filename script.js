@@ -161,7 +161,7 @@ function enviarPedidoWhatsApp() {
         return;
     }
 
-    let mensaje = "¡Hola! Quisiera realizar el siguiente pedido en *IMPOR HOME*:\n\n";
+    let mensaje = "¡Hola! Quisiera realizar el siguiente pedido en *IMPORT HOME*:\n\n";
     let total = 0;
 
     carrito.forEach((item, index) => {
