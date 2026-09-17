@@ -3,7 +3,7 @@ const NUMERO_WHATSAPP = "573143753293"; // Número de WhatsApp configurado
 
 // Base de datos local de productos
 const productos = [
-  { id: 1, nombre: "Afilador de Cuchillos", precio: 4000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Afilador+de+Cuchillos" },
+  { id: 1, nombre: "Afilador de Cuchillos", precio: 4000, categoria: "hogar", imagen: "https://www.google.com/imgres?q=afilador%20de%20cuchillos&imgurl=https%3A%2F%2Fhttp2.mlstatic.com%2FD_NQ_NP_863362-MCO83713309641_042025-O.webp&imgrefurl=https%3A%2F%2Fwww.mercadolibre.com.co%2Fafilador-de-cuchillos-de-cocina-4-en-1-de-acero-inoxidable%2Fup%2FMCOU3117339897&docid=0LPkHSeegbaThM&tbnid=EWKF6MZhQpwRdM&vet=12ahUKEwjEiIGh0PSWAxWtbzABHe5QLgEQnPAOegQINxAA..i&w=490&h=500&hcb=2&ved=2ahUKEwjEiIGh0PSWAxWtbzABHe5QLgEQnPAOegQINxAA" },
   { id: 2, nombre: "Termómetro de Cocina Sencillo", precio: 5000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Termometro+de+Cocina" },
   { id: 3, nombre: "Encendedor Eléctrico Recargable", precio: 5000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Encendedor+Electrico" },
   { id: 4, nombre: "Molde de Silicona x6", precio: 6000, categoria: "hogar", imagen: "https://via.placeholder.com/300?text=Molde+de+Silicona" },
