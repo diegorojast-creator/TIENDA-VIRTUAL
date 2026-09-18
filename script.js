@@ -88,6 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whatsappCheckoutBtn) whatsappCheckoutBtn.addEventListener('click', enviarPedidoWhatsApp);
 });
 
+// Función para formatear precio con separadores de miles y sin decimales
+function formatearPrecio(valor) {
+    return '$' + valor.toLocaleString('es-CO');
+}
+
 // Función para renderizar los productos
 function mostrarProductos(listaProductos) {
     productsGrid.innerHTML = '';
@@ -98,7 +103,7 @@ function mostrarProductos(listaProductos) {
             <img src="${prod.imagen}" alt="${prod.nombre}">
             <div class="product-info">
                 <h3 class="product-title">${prod.nombre}</h3>
-                <span class="product-price">$${prod.precio.toFixed(2)}</span>
+                <span class="product-price">${formatearPrecio(prod.precio)}</span>
                 <button class="add-to-cart-btn" onclick="agregarAlCarrito(${prod.id})">
                     <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
                 </button>
@@ -122,6 +127,19 @@ function agregarAlCarrito(id) {
     actualizarCarrito();
 }
 
+// Función para cambiar cantidad (+ o -)
+function cambiarCantidad(id, delta) {
+    const item = carrito.find(p => p.id === id);
+    if (!item) return;
+
+    item.cantidad += delta;
+    if (item.cantidad <= 0) {
+        eliminarDelCarrito(id);
+    } else {
+        actualizarCarrito();
+    }
+}
+
 // Función para eliminar del carrito
 function eliminarDelCarrito(id) {
     carrito = carrito.filter(item => item.id !== id);
@@ -134,24 +152,44 @@ function actualizarCarrito() {
     let total = 0;
     let totalUnidades = 0;
 
-    carrito.forEach(item => {
-        total += item.precio * item.cantidad;
-        totalUnidades += item.cantidad;
+    if (carrito.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #666;">Tu carrito está vacío</p>';
+    } else {
+        carrito.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            totalUnidades += item.cantidad;
 
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-item');
-        cartItem.innerHTML = `
-            <div class="cart-item-details">
-                <h4>${item.nombre}</h4>
-                <span class="cart-item-price">$${item.precio.toFixed(2)} x ${item.cantidad}</span>
-            </div>
-            <i class="fa-solid fa-trash remove-item" onclick="eliminarDelCarrito(${item.id})"></i>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-    });
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.style.display = 'flex';
+            cartItem.style.justifyContent = 'space-between';
+            cartItem.style.alignItems = 'center';
+            cartItem.style.marginBottom = '12px';
+            cartItem.style.paddingBottom = '10px';
+            cartItem.style.borderBottom = '1px solid #eee';
 
-    cartCount.textContent = totalUnidades;
-    cartTotalPrice.textContent = `$${total.toFixed(2)}`;
+            cartItem.innerHTML = `
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; font-size: 14px;">${item.nombre}</h4>
+                    <span style="color: #666; font-size: 13px;">${formatearPrecio(item.precio)} c/u</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin: 0 10px;">
+                    <button onclick="cambiarCantidad(${item.id}, -1)" style="padding: 2px 8px; cursor: pointer; border: 1px solid #ccc; background: #f0f0f0; border-radius: 4px; font-weight: bold;">-</button>
+                    <span style="font-weight: bold; min-width: 20px; text-align: center;">${item.cantidad}</span>
+                    <button onclick="cambiarCantidad(${item.id}, 1)" style="padding: 2px 8px; cursor: pointer; border: 1px solid #ccc; background: #f0f0f0; border-radius: 4px; font-weight: bold;">+</button>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-weight: bold; display: block;">${formatearPrecio(subtotal)}</span>
+                    <i class="fa-solid fa-trash remove-item" onclick="eliminarDelCarrito(${item.id})" style="color: red; cursor: pointer; margin-top: 5px; display: inline-block;"></i>
+                </div>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+        });
+    }
+
+    if (cartCount) cartCount.textContent = totalUnidades;
+    if (cartTotalPrice) cartTotalPrice.textContent = formatearPrecio(total);
 }
 
 // Función para procesar la orden vía WhatsApp
@@ -167,10 +205,10 @@ function enviarPedidoWhatsApp() {
     carrito.forEach((item, index) => {
         const subtotal = item.precio * item.cantidad;
         total += subtotal;
-        mensaje += `${index + 1}. *${item.nombre}*\n   Cantidad: ${item.cantidad} | Subtotal: $${subtotal.toFixed(2)}\n`;
+        mensaje += `${index + 1}. *${item.nombre}*\n   Cantidad: ${item.cantidad} | Subtotal: ${formatearPrecio(subtotal)}\n`;
     });
 
-    mensaje += `\n*TOTAL DEL PEDIDO: $${total.toFixed(2)}*`;
+    mensaje += `\n*TOTAL DEL PEDIDO: ${formatearPrecio(total)}*`;
     mensaje += "\n\nPor favor, confirmarme la disponibilidad y los datos para el envío. ¡Gracias!";
 
     const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
